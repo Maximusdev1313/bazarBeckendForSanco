@@ -4,7 +4,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    img = models.CharField(max_length=200)
+    img = models.ImageField(upload_to="media")
     info = models.CharField(max_length=400 , null=True , blank=True)
 
     def __str__(self):
@@ -13,7 +13,7 @@ class Category(models.Model):
 class Products(models.Model):
     name = models.CharField(max_length=100)
     prince = models.CharField(max_length=40)
-    img = models.CharField(max_length=200)
+    img = models.ImageField(upload_to="media")
     info = models.CharField(max_length=400 , null=True , blank=True)
     category_id = models.ForeignKey('Category' , on_delete=models.CASCADE, related_name='products')
 
